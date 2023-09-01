@@ -1,23 +1,69 @@
-const taskInput = document.getElementById('taskInput');
-const addTaskButton = document.getElementById('addTask');
-const taskList = document.getElementById('taskList');
 
-addTaskButton.addEventListener('click', addTask);
+  const taskInput = document.getElementById('taskInput');
+  const addTaskButton = document.getElementById('addTask');
+  const taskList = document.getElementById('taskList');
+  const darkModeToggle = document.getElementById('darkModeToggle');
+  const body = document.body;
 
-function addTask() {
-  const taskText = taskInput.value.trim();
-  if (taskText !== '') {
+  // Load tasks from local storage on page load
+  const tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+  // Populate the task list with tasks from local storage
+  tasks.forEach(taskText => {
+    addTaskToList(taskText);
+  });
+
+  addTaskButton.addEventListener('click', addTask);
+  darkModeToggle.addEventListener('click', toggleDarkMode);
+
+  function addTask() {
+    const taskText = taskInput.value.trim();
+    if (taskText !== '') {
+      addTaskToList(taskText);
+      taskInput.value = '';
+      saveTasksToLocalStorage();
+    }
+  }
+
+  function addTaskToList(taskText) {
     const taskItem = document.createElement('li');
     taskItem.innerHTML = `
+      
       <span>${taskText}</span>
+      <button class="editTask">Edit</button>
       <button class="deleteTask">Delete</button>
     `;
     taskList.appendChild(taskItem);
-    taskInput.value = '';
+
+    const editButton = taskItem.querySelector('.editTask');
+    editButton.addEventListener('click', () => {
+      editTask(taskItem);
+    });
 
     const deleteButton = taskItem.querySelector('.deleteTask');
     deleteButton.addEventListener('click', () => {
       taskList.removeChild(taskItem);
+      saveTasksToLocalStorage();
     });
+
   }
-}
+
+  function editTask(taskItem) {
+    const span = taskItem.querySelector('span');
+    const editButton = taskItem.querySelector('.editTask');
+
+    const newTaskText = prompt('Edit the task:', span.textContent);
+    if (newTaskText !== null) {
+      span.textContent = newTaskText;
+      saveTasksToLocalStorage();
+    }
+  }
+  // Save tasks to local storage
+  function saveTasksToLocalStorage() {
+    const tasks = [];
+    const taskItems = taskList.querySelectorAll('li span');
+    taskItems.forEach(item => {
+      tasks.push(item.textContent);
+    });
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
