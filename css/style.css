@@ -1,37 +1,51 @@
-
 body {
-    font-family: Arial, sans-serif;
-  }
-  #app {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  }
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-  li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #ddd;
-  }
-  input[type="text"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 3px;
-  }
-  button {
-    padding: 6px 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-  }
+  font-family: Arial, sans-serif;
+  background: #011535;
+  color: azure;
+}
+#app {
+  max-width:500px;
+  margin: 0 auto;
+  padding: 20px;
+  margin-top: 10%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+}
+li.done {
+  text-decoration: line-through;
+  color: #888;
+}
+input[type="text"] {
+  width: 80%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  color: #007bff;
+  background: transparent;
+}
+button {
+  padding: 6px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.editTask{
+  background-color: #007bff;
+}
+.deleteTask{
+  background: red;
+}
