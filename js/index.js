@@ -30,8 +30,8 @@
     taskItem.innerHTML = `
       
       <span>${taskText}</span>
-      <button class="editTask">Edit</button>
-      <button class="deleteTask">Delete</button>
+      <button class=" "><i class="fa-solid fa-trash-can deleteTask"></i>   <i class="fa-solid fa-pen-to-square editTask"></i></button>
+      
     `;
     taskList.appendChild(taskItem);
 
