@@ -44,8 +44,10 @@ button {
   cursor: pointer;
 }
 .editTask{
-  background-color: #007bff;
+  color: #ffff;
+  padding: 5px;
 }
 .deleteTask{
-  background: red;
+  color: red;
+  padding: 5px;
 }
